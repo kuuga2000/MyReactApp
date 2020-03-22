@@ -5,12 +5,18 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons:[
+      {name:'Uga',age:118},
+      {name:'Lee',age:12}
+    ]
+  }
   render(){
     return (
       <div className="App">
         <h1>привет</h1>
-        <Person name="Uga" age="18">Мой хобби, играю в игру</Person>
-        <Person name="Lee" age="12">Мой хобби, сматю филмь</Person>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>Мой хобби, играю в игру</Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Мой хобби, сматю филмь</Person>
       </div>
     );
   }
