@@ -33,10 +33,10 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <h1>привет</h1>
+        <h1>привет xasd</h1>
         <button onClick={this.swithNameHandler}>Switch Button</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={this.changeNameHandler}>Мой хобби, играю в игру</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.changeNameHandler}>Мой хобби, сматю филмь</Person>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={()=>this.changeNameHandler()}>Мой хобби, играю в игру</Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={()=>this.changeNameHandler()}>Мой хобби, сматю филмь</Person>
       </div>
     );
   }
