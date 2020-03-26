@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 import Person from './Person/Person';
@@ -9,7 +9,8 @@ class App extends Component {
     persons:[
       {name:'Uga',age:118},
       {name:'Lee',age:12}
-    ]
+    ],
+    showPersons: false
   }
 
   swithNameHandler = () => {
@@ -25,18 +26,42 @@ class App extends Component {
     this.setState({
       persons:[
         {name:event.target.value,age:118},
-        {name:'Lee zz',age:12}
+        {name:event.target.value,age:12}
       ]
     })
   }
 
-  render(){
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex,1);
+    this.setState({persons:persons});
+  }
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
+  render(){ console.log(this.state.showPersons)
+    let persons = null;
+    if(this.state.showPersons){
+      persons = (
+        <div>
+           {this.state.persons.map((person,index) => {
+             return <Person 
+                click={this.deletePersonHandler}
+                name={person.name} 
+                age={person.age} 
+                changed={this.changeNameHandler}>Мой хобби, играю в игру</Person>
+           })}
+        </div>
+      );
+    }
     return (
       <div className="App">
-        <h1>привет xasd</h1>
-        <button onClick={this.swithNameHandler}>Switch Button</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={()=>this.changeNameHandler()}>Мой хобби, играю в игру</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={()=>this.changeNameHandler()}>Мой хобби, сматю филмь</Person>
+        <h1>привет</h1>
+        <button onClick={this.togglePersonsHandler}>Switch Button</button>
+        {persons}
       </div>
     );
   }
