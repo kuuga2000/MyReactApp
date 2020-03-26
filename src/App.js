@@ -49,7 +49,7 @@ class App extends Component {
         <div>
            {this.state.persons.map((person,index) => {
              return <Person 
-                click={this.deletePersonHandler}
+                click={()=>this.deletePersonHandler(index)}
                 name={person.name} 
                 age={person.age} 
                 changed={this.changeNameHandler}>Мой хобби, играю в игру</Person>
